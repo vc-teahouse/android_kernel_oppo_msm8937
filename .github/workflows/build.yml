@@ -43,6 +43,10 @@ jobs:
       - name: Build Kernel
         working-directory: kernel
         run: |
+          cd KernelSU
+          git fetch
+          # git checkout origin/main
+          cd ..
           PATH=$GITHUB_WORKSPACE/zyc13/bin:$PATH
           make O=out ARCH=arm64 CC=clang CLANG_TRIBLE=aarch64-linux-gnu- CROSS_COMPILE=aarch64-linux-gnu- CROSS_COMPILE_ARM32=arm-linux-gnueabi- CROSS_COMPILE_COMPAT=arm-linux-gnueabi- ${{matrix.defconfig}}
           make O=out ARCH=arm64 CC=clang CLANG_TRIBLE=aarch64-linux-gnu- CROSS_COMPILE=aarch64-linux-gnu- CROSS_COMPILE_ARM32=arm-linux-gnueabi- CROSS_COMPILE_COMPAT=arm-linux-gnueabi- -j$(nproc) 
