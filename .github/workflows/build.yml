@@ -45,7 +45,7 @@ jobs:
           git submodule update --init --recursive
           cd KernelSU
           git fetch
-          git checkout origin/main
+          git fetch --tags
           cd ..
           PATH=$GITHUB_WORKSPACE/zyc13/bin:$PATH
           make O=out ARCH=arm64 CC=clang CLANG_TRIBLE=aarch64-linux-gnu- CROSS_COMPILE=aarch64-linux-gnu- CROSS_COMPILE_ARM32=arm-linux-gnueabi- CROSS_COMPILE_COMPAT=arm-linux-gnueabi- ${{matrix.defconfig}}
