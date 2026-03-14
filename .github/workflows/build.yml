@@ -10,7 +10,10 @@ jobs:
       fail-fast: false
       matrix:
         defconfig:
+          - lineageos_A57_defconfig
           - lineageos_R9s_defconfig
+          - lineageos_R9sPlus_defconfig
+          - lineageos_R9Plus_defconfig
     steps:
       - name: Set builddate
         id: generate-builddate
@@ -59,4 +62,4 @@ jobs:
         uses: softprops/action-gh-release@v2
         with:
           tag_name: r${{ github.run_number }}-${{ steps.generate-builddate.outputs.BUILDDATE }}
-          files: ./kernel/unpatch-${{ matrix.defconfig }}.zip
+          files: ./kernel/patches-${{ matrix.defconfig }}.zip
