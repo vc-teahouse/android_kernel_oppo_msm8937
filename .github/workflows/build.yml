@@ -63,4 +63,4 @@ jobs:
         uses: softprops/action-gh-release@v2
         with:
           tag_name: r${{ github.run_number }}-${{ steps.generate-builddate.outputs.BUILDDATE }}
-          files: ./kernel/patches-${{ matrix.defconfig }}.zip
+          files: ./kernel/unpatch-${{ matrix.defconfig }}.zip
